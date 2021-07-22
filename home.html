@@ -10,46 +10,30 @@
         <link rel="stylesheet" href="home.css">
     </head>
     <body>
-        <!-- <div class="alert" >
+        <div class="alert" >
             <div class="center-msg">
                 <h1>Getting lobby ready</h1>
                 <div class="loder"></div>
             </div>
         </div>
 
+        <div class="name-alert">
+            <div class="name-box">
+                <div><h1>TYPERACER</h1></div>
+                <div><label>At Pole Position ?</label></div>
+            <div><input type="text" placeholder="Your Name" id="myname"></div>
+                <div><button type="submit" onclick="entrace()">Enter the Race</button></div>
+            </div>
+        </div>
         
         <header>
             <h1>typeracer part2</h1>
             <div><p>active users</p><span class="total">0</span></div>
-        </header> -->
+        </header>
+
+
+
         <main>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
-                  </ul>
-                </div>
-              </nav>
-
-
-
-
-
             <div class="adj">
             <div class="card" id="card1">
                 <p font-family="Ubuntu">Enter the Grand Prix !</p>
@@ -86,7 +70,7 @@
 
         // const name = prompt("enter your name to join");
 
-        socket.emit('new-user-joined',name);
+        
     
         socket.on('user-dissconnected',(data)=>{
             document.querySelector('.total').innerHTML = data.length;
@@ -111,6 +95,13 @@
             }
         }
         });
+
+        function entrace(){
+            var name = document.getElementById("myname").value;
+            socket.emit('new-user-joined',name);
+            document.querySelector(".name-alert").setAttribute("style","display:none");
+
+        }
 
         practice=()=>{
             window.location.replace(`/practice?c=Beginner`);
