@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            practice race
+        </title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="practice.css">
+    </head>
+    <body>
+        <div class="alert">
+            <div class="lights">
+                <div>
+                    <p class="l1"></p>
+                    <p class="l2"></p>
+                    <p class="l3"></p>
+                </div>
+                <p class="text">Get ready to race!</p>
+                <p class="stime">:03</p>
+            </div>
+        </div>
+        <header>
+            <h1>typeracer</h1>
+        </header>
+        <main>
+            <div class="tracks">
+                <div class="track" id="track1">
+                    <figure class="car" class="car">
+                        <img src="carg.png" >
+                        <figcaption>(You)</figcaption>
+                    </figure>
+                    <div class="time">
+                        0:00
+                    </div>
+                    <div class="speed">
+                        0 wpm
+                    </div>
+                </div>
+            </div>
+            <p class="question" oncopy="return false">  
+                Stimulate your mind as you test your typing speed with this standard English paragraph typing test. Watch your typing speed and accuracy increase as you learn about a variety of new topics! Over 40 typing test selections available.
+            </p> 
+            <input type="text" class="answer" onpaste="return false"/>
+            <div class="btns">
+                <a href="/" class="btn1"><i class="fas fa-chevron-circle-left"></i> Main Menu(leave practice)</a>
+                
+                <select class="btn3">
+                    <option class="Beginner">Beginner</option>
+                    <option class="Average">Average</option>
+                    <option class="Typemaster">Typemaster</option>
+                    <option class="coder">Coder</option>
+                </select>
+                <a onclick="newgame()"  class="btn2">New Race <i class="fas fa-chevron-circle-right"></i></a>
+            </div>
+            <div class="final-msg">
+                <h1 class="head">Results of your Race</h1>
+                <div class="mid">
+                    <div class="side1"></div>
+                    <div class="side2">
+                        <div><p>Your speed:</p><p class="final_speed">1 wpm</p></div>
+                        <div><p>Time:</p><p class="final_time">1:49</p></div>
+                        <div><p>Accuracy:</p><p class="accu">100%</p></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+    <script>
+        var sinc = 0;
+        window.onload=()=>{
+        var sint=setInterval(() => {
+            document.querySelector(".btn2").setAttribute("href",window.location);
+                sinc++;
+                document.querySelector(".stime").innerHTML=`:0${4-sinc}`;
+                if(sinc == 1){
+                    document.querySelector(".l1").setAttribute("style","background: linear-gradient(to right,white,#F7090B);");
+                    document.querySelector(".l2").setAttribute("style","background: linear-gradient(to right,white,black); ");
+                    document.querySelector(".l3").setAttribute("style","background: linear-gradient(to right,white,black); ");
+                }
+                if(sinc == 2){
+                    document.querySelector(".l1").setAttribute("style","background: linear-gradient(to right,white,black); ");
+                    document.querySelector(".l2").setAttribute("style","background: linear-gradient(to right,white,#F4F700); ");
+                    document.querySelector(".l3").setAttribute("style","background: linear-gradient(to right,white,black); ");
+                }
+                if(sinc == 3){
+                    document.querySelector(".l1").setAttribute("style","background: linear-gradient(to right,white,black); ");
+                    document.querySelector(".l2").setAttribute("style","background: linear-gradient(to right,white,black); ");
+                    document.querySelector(".l3").setAttribute("style","background: linear-gradient(to right,white,#02F702); ");
+                    clearInterval(sint);
+                    var timer = setInterval(start,1000);
+                    var calspeed=setInterval(times,1000);
+                    document.querySelector(".answer").focus();
+                    var dis = document.querySelector(".btns").offsetTop + document.querySelector(".btns").clientHeight;
+                    document.querySelector("body").scrollTop = dis;
+                }
+            },1000);
+        }
+        var Beginner = ["Stimulate your mind as you test your typing speed with this standard English paragraph typing test. Watch your typing speed and accuracy increase as you learn about a variety of new topics! Over 40 typing test selections available.",
+                        "Scolding is something common in student life. Being a naughty boy, I am always scolded by my parents. But one day I was severely scolded by my English teacher. She infect teaches well.",
+                        "Studying is the main source of knowledge. Books are indeed never failing friends of man. For a mature mind, reading is the greatest source of pleasure and solace to distressed minds.",
+                        "The teacher had caught me red handed. She scolded me then and there and insulted me in front of the whole class. I was embarrassed. My cheeks burned being guilty conscious.",
+                        "Recently, an exhibition 'Building A New India' was held in the capital. It was organized by the Ministry of Information and Broadcasting, Government of India. The exhibition was set up in the Triveni Kala Sangam."];
+
+        var  Average =["The chief exhibits were photographs, novels, some sculptures by Indian modern artists presenting Indian cultural inheritance. First of all, I visited the general section of the exhibition where different charts and photographs depicting India's development in various fields were set. Most impressive photographs among these were those showing India's nuclear development.",
+                       "A student should never confine himself to his schoolbooks only. He should not miss the pleasure locked in the classics, poetry, drama, history, philosophy etc. We can derive benefit from other's experiences with the help of books. The various sufferings, endurance and joy described in books enable us to have a closer look at human life. They also inspire us to face the hardships of life courageously.",
+                       "Days are not of equal value in one's life. Some bring happiness while others bring sadness. Sadness and happiness both are equally important to man's life, since they are the two sides of a coin. As we cannot forget the happiest day, we are unable to forget the saddest day of our life too. The saddest day of my life was the Diwali Day.",
+                       "Everyone wants success in life and this can only be when one takes full advantage of the chance that comes in life. Never miss a chance; a little chance can turn into a golden gift. Make the best use of opportunities as opportunities do not always come. The saying as it stands, relates to the work of an ironsmith.",
+                       "What is being advised through this direction is that man should always carefully plan all his future actions. Deciding to do anything one should always view all sides of the matter; consider all the pros and cons of the consequences before taking that decision. Actions should not be taken in haste; major or even minor decisions should be considered and judged from all angles."];
+
+        // var code =[`import java.util.Scanner;class CheckEvenOdd{public static void main(String args[]){int num;System.out.println("Enter an Integer number:");Scanner input = new Scanner(System.in);num = input.nextInt();if ( num % 2 == 0 )System.out.println("Entered number is even");elseSystem.out.println("Entered number is odd");}}`];
+
+        var url_string = window.location; 
+        var url = new URL(url_string);
+        var difficulty = url.searchParams.get("c");
+
+        document.querySelector(`.${difficulty}`).selected = true;
+
+        document.querySelector(".btn3").addEventListener("change",()=>{
+            location.replace("/practice?c="+document.querySelector(".btn3").value);
+        });
+
+        newgame=()=>{
+            window.location.replace(`/practice?c=${difficulty}`);
+        }
+
+        var i = 0;
+        var th = 0;
+        var c= 0;
+        var errors = 0;
+        var m=0;
+        var et=0;
+        var gstop=0;
+        var random_num = Math.round(Math.random()*(5));
+
+        if(difficulty=="Beginner"){
+            var res = Beginner[random_num].split(" ");
+            var totalacu = Beginner[random_num].split("").length;
+            document.querySelector(".question").innerHTML=Beginner[random_num];
+        }if(difficulty=="Average"){
+            var res = Average[random_num].split(" ");
+            var totalacu = Beginner[random_num].split("").length;
+            document.querySelector(".question").innerHTML=Average[random_num];
+        }if(difficulty=="Typemaster"){
+            var res = Typemaster[random_num].split(" ");
+            var totalacu = Beginner[random_num].split("").length;
+            document.querySelector(".question").innerHTML=Typemaster[random_num];
+        }if(difficulty=="coder"){
+            var res = coder[random_num].split(" ");
+            var totalacu = Beginner[random_num].split("").length;
+            document.querySelector(".question").innerHTML=coder[random_num];
+        }
+
+        function start(){
+            document.querySelector(".alert").setAttribute("style","display:none");
+            c++;
+            sec = 60 - c;
+            if(c == 60){
+                c=0;
+              if(min!=0){
+                m++;
+            }
+            }
+            if(difficulty=="Beginner"){
+                min = 1 - m;
+            }if(difficulty=="Average"){
+                min = 4 - m;
+            }if(difficulty=="Typemaster"){
+                min = 7 - m;
+            }if(difficulty=="coder"){
+                min = 8 - m;
+            }
+
+            if(min == 0){
+                if(gstop == 0){
+              var stop =  setTimeout(function(){
+                    i=0;
+                    document.querySelector(".question").innerHTML="";
+                    document.querySelector(".question").setAttribute("style","padding:0;");
+                    document.querySelector(".answer").setAttribute("style","display:none");
+                    document.querySelector(".time").setAttribute("style","display:none");
+                    document.querySelector(".final-msg").setAttribute("style","display:flex");
+                    document.querySelector(".final_speed").innerHTML = Math.floor(sinc)+"wpm";
+                    document.querySelector(".final_time").innerHTML = et+"sec";
+                    document.querySelector(".speed").innerHTML = Math.floor(sinc)+"wpm";
+                    finalscu = ((totalacu-errors)/totalacu)*100;
+                    document.querySelector(".accu").innerHTML = Math.floor(finalscu)+"%";
+                    clearTimeout(stop);
+                },60000);
+            }
+                gstop++;
+            }
+            document.querySelector(".time").innerHTML=`${min}:${sec}`;
+        }
+
+        function times()
+        {
+           et = et + 1;
+           var wpm = (res.slice(0,i).join(" ").length * 60)/(et*5);
+           document.querySelector(".speed").innerHTML=`${Math.floor(wpm)} wpm`;
+           sinc = wpm;
+        }
+
+        document.querySelector(".answer").addEventListener("keydown",(e)=>{
+            var val = document.querySelector(".answer").value;
+
+            var rc = ((i)/res.length)*94;
+
+            var temp = res[i];
+
+
+            document.querySelector(".car").setAttribute("style",`left:${rc}%`);
+
+            if(val == " "){
+                document.querySelector(".answer").value=""; 
+            }
+
+            if(val.split("").slice(0,(val.length-1)).join("") != temp.split("").slice(0,(val.length-1)).join("")){
+                if(e.key != "Shift"){
+                    if(th != 0){
+                  document.querySelector(".answer").setAttribute("style","border:2px solid black;box-shadow:0px 0px 50px #BC0101 inset");
+                    }
+                    errors++;
+                    th++;
+                }
+            }
+
+            if(val.split("").slice(0,(val.length-1)).join("") == temp.split("").slice(0,(val.length-1)).join("")){
+
+                res[i]=`<span>${res[i]}</span>`;
+
+                document.querySelector(".question").innerHTML=res.join(" ");
+
+                res[i]=temp;
+
+                document.querySelector(".answer").setAttribute("style","background-color:white;border:none");
+                if(val == temp){
+                        i++;
+                        document.querySelector(".answer").value="";
+                }
+            }
+
+
+            if(val == res[(res.length-1)]){
+                i=0;
+                document.querySelector(".final-msg").setAttribute("style","display:flex");
+                document.querySelector(".final_speed").innerHTML = Math.floor(sinc)+"wpm";
+                document.querySelector(".final_time").innerHTML = et+"sec";
+                finalscu = ((totalacu-errors)/totalacu)*100;
+                document.querySelector(".speed").innerHTML = Math.floor(sinc)+"wpm";
+                document.querySelector(".accu").innerHTML = Math.floor(finalscu)+"%";
+                document.querySelector(".question").innerHTML="";
+                document.querySelector(".question").setAttribute("style","padding:0;");
+                document.querySelector(".answer").setAttribute("style","display:none");
+                document.querySelector(".time").setAttribute("style","display:none");
+            }
+        });
+    </script>
+</html>

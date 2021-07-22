@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            typing test
+        </title>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <link rel="stylesheet" href="home.css">
+    </head>
+    <body>
+        <div class="alert" >
+            <div class="center-msg">
+                <h1>Getting lobby ready</h1>
+                <div class="loder"></div>
+            </div>
+        </div>
+        <header>
+            <h1>typeracer</h1>
+            <div><p>active users</p><span class="total">0</span></div>
+        </header>
+        <main>
+            <div class="adj">
+            <div class="card" id="card1">
+                <p>Get matched up with online opponents</p>
+                <button class="btn1" onclick="waiting()">Enter a Typing Race <i class="fas fa-chevron-circle-right"></i></button>
+                <img src="car.png" class="car"/>
+                <img src="start.png" class="go"/>
+                <div class="road"></div>
+                <div class="grass"></div>
+            </div>
+            </div>
+
+            <div class="adj">
+            <div class="card" id="card2">
+                <p>Improve your typing skills on your own</p>
+                <button class="btn2"  onclick="practice()"><a >Practice Skills <i class="fas fa-chevron-circle-right"></i></a></button>
+                <img src="h2.png" class="prac"/>
+            </div>
+            </div>
+
+            <div class="adj">
+            <div class="card" id="card3">
+                <p>Invite people to a private race</p>
+                <button class="btn3" >Race Your Freinds <i class="fas fa-chevron-circle-right"></i></button>
+                <img src="freind.png" class="invite"/>
+            </div>
+            </div>
+        </main>
+
+    </body>
+    <script src ="http://localhost:3000/socket.io/socket.io.js"></script>
+   
+    <script>
+        const socket = io('http://localhost:3000');
+
+        const name = prompt("enter your name to join");
+
+        socket.emit('new-user-joined',name);
+    
+        socket.on('user-dissconnected',(data)=>{
+            document.querySelector('.total').innerHTML = data.length;
+        });
+
+        socket.on('user-joined',(data)=>{
+            console.log(data);
+            document.querySelector('.total').innerHTML = data.length;
+        });
+
+        waiting=()=>{
+            socket.emit('waiting',name);
+            document.querySelector(".alert").setAttribute("style","display:flex");
+            socket.emit('check-waiting',name);
+        }
+
+        socket.on('match-found',(data)=>{
+            console.log(data);
+            for(var h=0;h<data.length;h++){
+            if(data[h].name == name){
+                window.location.replace(`/race?num=${data[h].ranno}&uname=${data[h].name}&room=${data[h].roomno}`);
+            }
+        }
+        });
+
+        practice=()=>{
+            window.location.replace(`/practice?c=Beginner`);
+        }
+
+    </script>
+</html>

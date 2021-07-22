@@ -1,0 +1,10 @@
+{
+ "user": [
+  "new value",
+  "user2"
+ ],
+ "var1": "new value",
+ "var2": {
+  "var3": "new value"
+ }
+}

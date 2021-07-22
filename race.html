@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            practice race
+        </title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="race.css">
+    </head>
+    <body>
+        <div class="alert">
+            <div class="lights">
+                <div>
+                    <p class="l1"></p>
+                    <p class="l2"></p>
+                    <p class="l3"></p>
+                </div>
+                <p class="text">Get ready to race!</p>
+                <p class="stime">:03</p>
+            </div>
+        </div>
+        <header>
+            <h1>typeracer</h1>
+        </header>
+        <main>
+            <div class="tracks">
+                <div class="track" id="track0">
+                    <figure class="car" id="car0">
+                        <img src="carg.png" >
+                        <figcaption>(You)</figcaption>
+                    </figure>
+                    <div class="time">
+                        0:00
+                    </div>
+                    <div class="place" id="place0">
+                        1st place
+                    </div>
+                    <div class="speed" id="speed0">
+                        0 wpm
+                    </div>
+                </div>
+                <div class="track" id="track1">
+                    <figure class="car" id="car1">
+                        <img src="cary.png" >
+                        <figcaption id="player1">(Guest1)</figcaption>
+                    </figure>
+                    <div class="place" id="place1">
+                        2nd place
+                    </div>
+                    <div class="speed" id="speed1">
+                        0 wpm
+                    </div>
+                </div>
+                <div class="track" id="track2">
+                    <figure class="car" id="car2">
+                        <img src="carp.png" >
+                        <figcaption id="player2">(Guest2)</figcaption>
+                    </figure>
+                    <div class="place" id="place2">
+                        3rd place
+                    </div>
+                    <div class="speed" id="speed2">
+                        0 wpm
+                    </div>
+                </div>
+               
+            </div>
+            <p class="question" oncopy="return false">  
+                Stimulate your mind as you test your typing speed with this standard English paragraph typing test. Watch your typing speed and accuracy increase as you learn about a variety of new topics! Over 40 typing test selections available.
+            </p> 
+            <input type="text" class="answer" onpaste="return false"/>
+            <div class="btns">
+                <a href="/" class="btn1"><i class="fas fa-chevron-circle-left"></i> Main Menu(leave practice)</a>
+                
+                <!-- <select class="btn3">
+                    <option class="Beginner">Beginner</option>
+                    <option class="Average">Average</option>
+                    <option class="Typemaster">Typemaster</option>
+                    <option class="coder">coder</option>
+                </select> -->
+
+                <a onclick="newgame()" class="btn2">New Race <i class="fas fa-chevron-circle-right"></i></a>
+            </div>
+            <div class="final-msg">
+                <h1 class="head">heading not yet decided</h1>
+                <div class="mid">
+                    <div class="side1"></div>
+                    <div class="side2">
+                        <div><p>Your speed:</p><p class="final_speed">1 wpm</p></div>
+                        <div><p>Time:</p><p class="final_time">1:49</p></div>
+                        <div><p>Accuracy:</p><p class="accu">100%</p></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+    <script src ="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script>
+        document.onkeydown = function (e) {
+         return false;
+        }
+        document.onkeyup = function (e) {
+         return false;
+        }
+        document.onkeypress = function (e) {
+         return false;
+        }
+        const socket = io('http://localhost:3000');
+        var url_string = window.location; 
+        var url = new URL(url_string);
+        var difficulty = "Beginner";
+        var name = url.searchParams.get("uname");
+        var room = url.searchParams.get("room");
+        var random_num = url.searchParams.get("num");
+
+        socket.emit('match-start', {'pos': 0,'speed': 0,'place':null,'name':name,'roomno':room});
+
+        socket.on('match-start', (data)=>{
+            var b=0;
+            console.log(data)
+            if(data.roomno == room){
+            for(var k=0;k<=2;k++){
+                if(data[0][k].name != name){
+                    b++;
+                    document.getElementById("player"+b).innerHTML = data[0][k].name;
+                    if(data[0][k].speed){
+                    document.getElementById("place"+b).innerHTML = data[0][k].place;
+                    document.getElementById("speed"+b).innerHTML = `${Math.floor(data[0][k].speed)} wpm`;
+                    document.getElementById("car"+b).setAttribute("style",`left:${data[0][k].pos}%`);
+                    }
+                }
+            }
+        }
+        });
+
+        socket.on('score-update', (data)=>{
+            var b=0;
+            for(var k=0;k<=2;k++){
+            if(data[0][k].name != name){
+                b++;
+                document.getElementById("player"+b).innerHTML = data[0][k].name;
+                if(data[0][k].speed){
+                    if(data[0][k].place != null){
+                        document.getElementById("place"+b).setAttribute("style","display:block");
+                    }
+                document.getElementById("place"+b).innerHTML = data[0][k].place;
+                if(Math.floor(data[0][k].speed) !=  0){
+                    document.getElementById("speed"+b).innerHTML = `${Math.floor(data[0][k].speed)} wpm`;
+                }
+                document.getElementById("car"+b).setAttribute("style",`left:${data[0][k].pos}%`);
+                }
+            }else{
+                if(data[0][k].place != null){
+                    if(!(document.getElementById("place" + 0).style.display)){
+                        document.getElementById("place" + 0).setAttribute("style","display:block");
+                        document.getElementById("place" + 0).innerHTML = data[0][k].place;
+                    }
+                    document.getElementById("car"+ 0).setAttribute("style",`left:${data[0][k].pos}%`);
+                    document.querySelector(".btn2").setAttribute("style","display:block");
+
+                    if(data[0][k].place == "3rd place"){
+                        socket.emit('match-finsihed',room);
+                    }
+                }
+            }
+        }
+        });
+
+
+        var sinc = 0;
+        window.onload=()=>{
+        var sint=setInterval(() => {
+            document.querySelector(".btn2").setAttribute("href",window.location);
+                sinc++;
+                document.querySelector(".stime").innerHTML=`:0${4-sinc}`;
+                if(sinc == 1){
+                    document.querySelector(".l1").setAttribute("style","background: linear-gradient(to right,white,#F7090B);");
+                    document.querySelector(".l2").setAttribute("style","background: linear-gradient(to right,white,black); ");
+                    document.querySelector(".l3").setAttribute("style","background: linear-gradient(to right,white,black); ");
+                }
+                if(sinc == 2){
+                    document.querySelector(".l1").setAttribute("style","background: linear-gradient(to right,white,black); ");
+                    document.querySelector(".l2").setAttribute("style","background: linear-gradient(to right,white,#F4F700); ");
+                    document.querySelector(".l3").setAttribute("style","background: linear-gradient(to right,white,black); ");
+                }
+                if(sinc == 3){
+                    document.querySelector(".l1").setAttribute("style","background: linear-gradient(to right,white,black); ");
+                    document.querySelector(".l2").setAttribute("style","background: linear-gradient(to right,white,black); ");
+                    document.querySelector(".l3").setAttribute("style","background: linear-gradient(to right,white,#02F702); ");
+                    clearInterval(sint);
+                    var timer = setInterval(start,1000);
+                    var calspeed=setInterval(times,1000);
+                    var dis = document.querySelector(".btns").offsetTop + document.querySelector(".btns").clientHeight;
+                    document.querySelector("body").scrollTop = dis;
+                    document.querySelector(".answer").focus();
+                    document.onkeydown = function (e) {
+                        return true;
+                    }
+                    document.onkeyup = function (e) {
+                        return true;
+                    }
+                    document.onkeypress = function (e) {
+                        return true;
+                    }
+                }
+            },1000);
+        }
+        var Beginner = ["Stimulate your mind as you test your typing speed with this standard English paragraph typing test. Watch your typing speed and accuracy increase as you learn about a variety of new topics! Over 40 typing test selections available.",
+                        "Scolding is something common in student life. Being a naughty boy, I am always scolded by my parents. But one day I was severely scolded by my English teacher. She infect teaches well.",
+                        "Studying is the main source of knowledge. Books are indeed never failing friends of man. For a mature mind, reading is the greatest source of pleasure and solace to distressed minds.",
+                        "The teacher had caught me red handed. She scolded me then and there and insulted me in front of the whole class. I was embarrassed. My cheeks burned being guilty conscious.",
+                        "Recently, an exhibition 'Building A New India' was held in the capital. It was organized by the Ministry of Information and Broadcasting, Government of India. The exhibition was set up in the Triveni Kala Sangam.",
+                        "The chief exhibits were photographs",
+                        "A student should never confine himself to his schoolbooks only. He should not miss the pleasure locked in the classics, poetry, drama, history, philosophy etc. We can derive benefit from other's experiences with the help of books. ",
+                        "Days are not of equal value in one's life. Some bring happiness while others bring sadness. Sadness and happiness both are equally important to man's life, since they are the two sides of a coin. ",
+                        "Everyone wants success in life and this can only be when one takes full advantage of the chance that comes in life. Never miss a chance; a little chance can turn into a golden gift.",
+                        "What is being advised through this direction is that man should always carefully plan all his future actions. Deciding to do anything one should always view all sides of the matter;"];
+
+
+        var i = 0;
+        var th = 0;
+        var c= 0;
+        var m=0;
+        var et=0;
+        var gstop=0;
+        var errors= 0;
+        var rc = 0;
+
+        if(difficulty=="Beginner"){
+            var res = Beginner[random_num].split(" ");
+            var totalacu = Beginner[random_num].split("").length;
+            document.querySelector(".question").innerHTML=Beginner[random_num];
+        }
+
+        function start(){
+            document.querySelector(".alert").setAttribute("style","display:none");
+            c++;
+            sec = 60 - c;
+            if(c == 60){
+                c=0;
+              if(min!=0){
+                m++;
+            }
+            }
+
+            if(difficulty=="Beginner"){
+                min = 1 - m;
+            }
+
+
+
+            if(min == 0){
+                if(gstop == 0){
+              var stop =  setTimeout(function(){
+                    i=0;
+                    document.querySelector(".question").innerHTML="";
+                    document.querySelector(".question").setAttribute("style","padding:0;");
+                    document.querySelector(".answer").setAttribute("style","display:none");
+                    document.querySelector(".time").setAttribute("style","display:none");
+
+                    document.querySelector(".final-msg").setAttribute("style","display:flex");
+                    if(!(document.getElementById("place" + 0).style.display)){
+                        document.querySelector(".final_speed").innerHTML = Math.floor(sinc)+"wpm";
+                        document.querySelector(".final_time").innerHTML = et+"sec";
+                    }
+                    finalscu = ((totalacu-errors)/totalacu)*100;
+                    socket.emit('score-update', {'pos': rc,'speed': sinc,'place': "unfinished",'name':name,'roomno':room,'id':socket.id});
+                    clearTimeout(stop);
+                },60000);
+            }
+                gstop++;
+            }
+            document.querySelector(".time").innerHTML=`${min}:${sec}`;
+        }
+
+
+        function times()
+        {
+           et = et + 1;
+           var wpm = (res.slice(0,i).join(" ").length * 60)/(et*5);
+           if(Math.floor(wpm) != 0){
+            document.querySelector(".speed").innerHTML=`${Math.floor(wpm)} wpm`;
+           }
+           sinc = wpm;
+           rc =  document.getElementById("car0").style.left.split("%")[0];
+
+           socket.emit('score-update', {'pos': rc,'speed': sinc,'place':null,'name':name,'roomno':room,'id':socket.id});
+        }
+
+        document.querySelector(".answer").addEventListener("keydown",(e)=>{
+            var val = document.querySelector(".answer").value;
+
+            var rc = ((i)/res.length)*94;
+
+            var temp = res[i];
+
+
+            document.querySelector(".car").setAttribute("style",`left:${rc}%`);
+
+            socket.emit('score-update', {'pos': rc,'speed': sinc,'place':null,'name':name,'roomno':room,'id':socket.id});
+
+            if(val == " "){
+                document.querySelector(".answer").value=""; 
+            }
+
+            if(val.split("").slice(0,(val.length-1)).join("") != temp.split("").slice(0,(val.length-1)).join("")){
+                if(e.key != "Shift"){
+                    if(th != 0){
+                     document.querySelector(".answer").setAttribute("style","border:2px solid black;box-shadow:0px 0px 50px #BC0101 inset");
+                    }
+                    errors++;
+                    th++;
+                }
+            }
+
+            if(val.split("").slice(0,(val.length-1)).join("") == temp.split("").slice(0,(val.length-1)).join("")){
+
+                res[i]=`<span>${res[i]}</span>`;
+
+                document.querySelector(".question").innerHTML=res.join(" ");
+
+                res[i]=temp;
+
+                document.querySelector(".answer").setAttribute("style","background-color:white;border:none");
+                if(val == temp){
+                        i++;
+                        document.querySelector(".answer").value="";
+                }
+            }
+
+
+            if(val == res[(res.length-1)]){
+                i=0;
+                var ftime = et - 60;
+                socket.emit('score-update', {'pos': rc,'speed': sinc,'place': "finished",'name':name,'roomno':room,'id':socket.id});
+
+                document.querySelector(".final-msg").setAttribute("style","display:flex");
+                document.querySelector(".final_speed").innerHTML = Math.floor(sinc)+"wpm";
+                document.querySelector(".final_time").innerHTML = et+"sec";
+                finalscu = ((totalacu-errors)/totalacu)*100;
+                if(Math.floor(sinc) != 0){
+                    document.querySelector(".speed").innerHTML = Math.floor(sinc)+"wpm";
+                }
+                document.querySelector(".accu").innerHTML = Math.floor(finalscu)+"%";
+                document.querySelector(".question").innerHTML="";
+                document.querySelector(".question").setAttribute("style","padding:0;");
+                document.querySelector(".answer").setAttribute("style","display:none");
+            }
+        });
+
+        newgame=()=>{
+            socket.emit('waiting',name);
+            document.querySelector(".alert").setAttribute("style","display:flex");
+            document.querySelector(".text").innerHTML = "Finding lobby";
+            document.querySelector(".stime").setAttribute("style","display:none");
+            setInterval(() => {
+                socket.emit('check-waiting',name);
+            }, 1000);
+        }
+
+        socket.on('match-found',(data)=>{
+            for(var h=0;h<=2;h++){
+            if(data[h].name == name){
+                window.location.replace(`/race?num=${data[h].ranno}&uname=${data[h].name}&room=${data[h].roomno}`);
+            }
+        }
+        });
+    </script>
+</html>
