@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<title>TYPERACER</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+  background-image: url('images/start.jpg');
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+.button {
+  background-color: #4CAF50;
+  border: 0px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  /* margin: 4px 2px; */
+  cursor: pointer;
+}
+
+</style>
+<body>
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+  <div class="w3-display-topleft w3-padding-large w3-xlarge">
+    F1
+  </div>
+  <div class="w3-display-left"  style="margin:80px; top:200px">
+    <h1 class="w3-jumbo w3-animate-top">TYPERACER</h1>
+    <hr class="w3-border-grey" style="margin:auto;width:40%">
+    <p class="w3-large w3-center"><button><a onclick="start()" class="button">At Pole Position ?</a></button></p>
+  </div>
+ 
+</div>
+
+</body>
+<script>
+       start=()=>{
+            window.location.replace(`/home`);
+        }
+</script>
+</html>

@@ -70,6 +70,23 @@
                 border-radius: 20px;
             }
 
+            /* .card{
+                width:400px;
+                height:400px;
+                background-color: whitesmoke;
+                border-radius: 20px;
+            } */
+
+            .card .card-content a{
+                width:400px;
+                height:400px;
+                background-color: whitesmoke;
+                border-radius: 20px;
+            }
+            .card .card-content a:hover{
+                color:rgba(0, 0, 0, 0.7);
+            }
+
             #card1{
                 position: relative;
                 display:flex;
@@ -109,44 +126,19 @@
                 background-color: #3D8B40;
             }
 
-            .grass{
-                position: absolute;
-                bottom: 0%;
-                width:100%;
-                height:15%;
-                background-image: url("grass.png");
-                background-size: 10% 100%;
-                border-radius: 20px;
-                z-index: 11;
-            }
 
-            .road{
-                position: absolute;
-                bottom: 2%;
-                left:0%;
-                width:400%;
-                height:10%;
-                background-image: url("road.jpg");
-                background-size: 25% 100%;
-            }
 
             .car{
+                font-family: Ubuntu;
                 position: absolute;
-                bottom: 8%;
+                bottom: 5%;
                 left:20%;
-                width:50%;
-                height:20%;
+                width:60%;
+                height:40%;
                 z-index: 10;
             }
 
-            .go{
-                position: absolute;
-                bottom: 10%;
-                right:1%;
-                width:20%;
-                height:20%;
-                z-index: 10;
-            }
+     
 
             #card2{
                 height:400px;
@@ -167,6 +159,17 @@
                 align-items: center;
                 color:#666666;
                 font-size: 90%;
+            }
+
+            #card2 p:hover{
+                width:100%;
+                height:30%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: orange;
+                font-size: 90%;
+                transition: all 0.3 ease;
             }
 
             .btn2{
@@ -246,7 +249,7 @@
 
             .invite{
                 position: absolute;
-                bottom: 0%;
+                bottom: 5%;
                 left:20%;
                 width:60%;
                 height:40%;

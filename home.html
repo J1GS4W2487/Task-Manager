@@ -10,31 +10,60 @@
         <link rel="stylesheet" href="home.css">
     </head>
     <body>
-        <div class="alert" >
+        <!-- <div class="alert" >
             <div class="center-msg">
                 <h1>Getting lobby ready</h1>
                 <div class="loder"></div>
             </div>
         </div>
+
+        
         <header>
-            <h1>typeracer</h1>
+            <h1>typeracer part2</h1>
             <div><p>active users</p><span class="total">0</span></div>
-        </header>
+        </header> -->
         <main>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+
+
+
+
+
             <div class="adj">
             <div class="card" id="card1">
-                <p>Get matched up with online opponents</p>
+                <p font-family="Ubuntu">Enter the Grand Prix !</p>
                 <button class="btn1" onclick="waiting()">Enter a Typing Race <i class="fas fa-chevron-circle-right"></i></button>
-                <img src="car.png" class="car"/>
-                <img src="start.png" class="go"/>
-                <div class="road"></div>
-                <div class="grass"></div>
+                <img src="jig.png" class="car"/>
+               
+          
             </div>
             </div>
 
             <div class="adj">
             <div class="card" id="card2">
-                <p>Improve your typing skills on your own</p>
+                
+                <p>Grind your Gears !</p>
                 <button class="btn2"  onclick="practice()"><a >Practice Skills <i class="fas fa-chevron-circle-right"></i></a></button>
                 <img src="h2.png" class="prac"/>
             </div>
@@ -44,7 +73,7 @@
             <div class="card" id="card3">
                 <p>Invite people to a private race</p>
                 <button class="btn3" >Race Your Freinds <i class="fas fa-chevron-circle-right"></i></button>
-                <img src="freind.png" class="invite"/>
+                <img src="hi.png" class="invite"/>
             </div>
             </div>
         </main>
@@ -55,7 +84,7 @@
     <script>
         const socket = io('https://typeracersp.herokuapp.com');
 
-        const name = prompt("enter your name to join");
+        // const name = prompt("enter your name to join");
 
         socket.emit('new-user-joined',name);
     
