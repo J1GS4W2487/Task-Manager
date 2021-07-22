@@ -97,7 +97,7 @@
             </div>
         </main>
     </body>
-    <script src ="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src ="https://typeracersp.herokuapp.com/socket.io/socket.io.js"></script>
     <script>
         document.onkeydown = function (e) {
          return false;
@@ -108,7 +108,7 @@
         document.onkeypress = function (e) {
          return false;
         }
-        const socket = io('http://localhost:3000');
+        const socket = io('https://typeracersp.herokuapp.com');
         var url_string = window.location; 
         var url = new URL(url_string);
         var difficulty = "Beginner";
