@@ -22,7 +22,7 @@
                 <div><h1>TYPERACER</h1></div>
                 <div><label>At Pole Position ?</label></div>
             <div><input type="text" placeholder="Your Name" id="myname"></div>
-                <div><button type="submit" onclick="entrace()">Enter the Race ! <i class="fas fa-flag-checkered" color="black"></i></button></div>
+                <div><button type="submit" onclick="entrace()">Enter the Grand Prix<i class="fas fa-flag-checkered" color="black"></i></button></div>
             </div>
         </div>
         
@@ -61,7 +61,7 @@
         </div>
 
             <div class="card" id="card1">
-                <p font-family="Ubuntu">Enter the Grand Prix !</p>
+                <p font-family="Ubuntu">Enter the Race !</p>
                 <button class="btn1" onclick="waiting()">Enter a Typing Race <i class="fas fa-chevron-circle-right"></i></button>
                 <img src="jig.png" class="car"/>
                
@@ -123,6 +123,7 @@
 
         function entrace(){
             var name = document.getElementById("myname").value;
+            console.log(name,document.getElementById("myname").value);
             socket.emit('new-user-joined',name);
             document.querySelector(".name-alert").setAttribute("style","display:none");
             document.querySelector("header").setAttribute("style","display:block");
