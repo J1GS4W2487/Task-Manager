@@ -1,47 +1,158 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+Hall of Fame
+</title>
 <style>
-table {
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid #ddd;
+*
+{
+margin:0;
+padding:0;
 }
 
-th, td {
-  text-align: left;
-  padding: 16px;
+h1
+{
+text-transform:uppercase;
+color:green;
+width:100%;
+height:10vh;
+display:flex;
+justify-content:center;
+align-items:center;
 }
+
+#mytable
+{
+width:90%;
+max-height:60vh;
+margin:5%;
+border-collapse:collapse;
+border:1px solid black;
+background-color: grey;
+}
+
+th
+{
+height:6.66vh;
+text-align:center;
+border:1px solid black;
+background-color: red;
+border-right:none;
+border-left:none;
+}
+
+td
+{
+height:6.66vh;
+text-align:center;
+border:1px solid black;
+border-right:none;
+border-left:none;
+}
+
+tr:hover
+{
+background-color:lightgrey;
+}
+
+#myinput
+{
+width:99%;
+height:6vh;
+margin:0.5%;
+padding-left:50px;
+font-weight:1000;
+}
+
 </style>
 </head>
 <body>
+<h1>TOP 10 VELE LOG</h1>
 
-<h2>Full-width Table</h2>
-<p>Use width: 100% to create a full-width table:</p>
+<table id="mytable">
 
-<table>
-  <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Points</th>
-  </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
-    <td>94</td>
-  </tr>
-  <tr>
-    <td>Adam</td>
-    <td>Johnson</td>
-    <td>67</td>
-  </tr>
+<tr class="header">
+<th>NAME</th>
+<th>SPEED</th>
+<th>TIME</th>
+</tr>
+
+<tr id="pos1">
+  <td class="name">tejas</td>
+  <td class="speed">1000 wpm</td>
+  <td class="time">1:00pm 1/1/2002</td>
+</tr>
+
+<tr id="pos2">
+  <td class="name">tejas</td>
+  <td class="speed">1000 wpm</td>
+  <td class="time">1:00pm 1/1/2002</td>
+</tr>
+
+<tr id="pos3">
+  <td class="name">tejas</td>
+  <td class="speed">1000 wpm</td>
+  <td class="time">1:00pm 1/1/2002</td>
+</tr>
+
+<tr id="pos4">
+  <td class="name">tejas</td>
+  <td class="speed">1000 wpm</td>
+  <td class="time">1:00pm 1/1/2002</td>
+</tr>
+
+
+<tr id="pos5">
+  <td class="name">tejas</td>
+  <td class="speed">1000 wpm</td>
+  <td class="time">1:00pm 1/1/2002</td>
+</tr>
+
+
+<tr id="pos6">
+  <td class="name">tejas</td>
+  <td class="speed">1000 wpm</td>
+  <td class="time">1:00pm 1/1/2002</td>
+</tr>
+
+
+<tr id="pos7">
+  <td class="name">tejas</td>
+  <td class="speed">1000 wpm</td>
+  <td class="time">1:00pm 1/1/2002</td>
+</tr>
+
+<tr id="pos8">
+  <td class="name">tejas</td>
+  <td class="speed">1000 wpm</td>
+  <td class="time">1:00pm 1/1/2002</td>
+</tr>
+
+<tr id="pos9">
+  <td class="name">tejas</td>
+  <td class="speed">1000 wpm</td>
+  <td class="time">1:00pm 1/1/2002</td>
+</tr>
+
+<tr id="pos10">
+  <td class="name">tejas</td>
+  <td class="speed">1000 wpm</td>
+  <td class="time">1:00pm 1/1/2002</td>
+</tr>
+
+
+
 </table>
+<script type="text/javascript" src="leaderboard.js"></script>
+<script>
+console.log(top10);
+top10.forEach((element,index) => {
+    document.querySelector(`#pos${index+1} .name`).innerText=element.name;
+    document.querySelector(`#pos${index+1} .speed`).innerText=element.speed;
+    document.querySelector(`#pos${index+1} .time`).innerText=element.date;
+});
 
+</script>
 </body>
 </html>
