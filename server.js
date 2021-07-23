@@ -82,8 +82,8 @@ io.on('connection', function(socket) {
             }
          }
          waiting.splice(0,1);
-         waiting.splice(1,1);
-         waiting.splice(2,1);
+         waiting.splice(0,1);
+         waiting.splice(0,1);
       }
    });
       
@@ -147,6 +147,7 @@ io.on('connection', function(socket) {
    });
 
    socket.on('match-finsihed',(room)=>{
+      console.log(matchpos, matchsocket);
       for(var m=0;m<matchpos.length;m++){
          if(matchpos[m][0] == room){
             matchpos.splice(m,1);
@@ -163,6 +164,7 @@ io.on('connection', function(socket) {
          }
          matchsocket.splice(m,1);
       }
+      console.log(matchpos, matchsocket);
    });
 });
 

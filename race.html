@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            practice race
+           Race 
         </title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -97,7 +97,7 @@
             </div>
         </main>
     </body>
-    <script src ="https://typeracersp.herokuapp.com/socket.io/socket.io.js"></script>
+    <script src ="http://localhost:3000/socket.io/socket.io.js"></script>
     <script>
         document.onkeydown = function (e) {
          return false;
@@ -108,7 +108,7 @@
         document.onkeypress = function (e) {
          return false;
         }
-        const socket = io('https://typeracersp.herokuapp.com');
+        const socket = io('http://localhost:3000/');
         var url_string = window.location; 
         var url = new URL(url_string);
         var difficulty = "Beginner";
