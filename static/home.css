@@ -250,8 +250,8 @@
             .btn2{
                 text-decoration: none;
                 text-align: center;
-                width:300px;
-                height:50px;
+                width:200px;
+                height:40px;
                 background-color: #005894;
                 color:white;
                 font-size: 100%;
@@ -259,9 +259,8 @@
                 outline: none;
                 font-weight: 300;
                 cursor:pointer;
-                margin-top: 5%;
                 border-radius: 5px;
-                box-shadow: 0px 2px 3px 3px #D5D5D5;
+                box-shadow: 0px 2px 3px 3px grey;
             }
 
             .btn2 a{
@@ -304,8 +303,8 @@
             }
 
             .btn3{
-                width:300px;
-                height:50px;
+                width:200px;
+                height:40px;
                 background-color:mediumorchid;
                 color:white;
                 font-size: 100%;
@@ -313,9 +312,8 @@
                 outline: none;
                 font-weight: 300;
                 cursor:pointer;
-                margin-top: 5%;
                 border-radius: 5px;
-                box-shadow: 0px 2px 3px 3px #D5D5D5;
+                box-shadow: 0px 2px 3px 3px grey;
             }
 
             .btn3:hover{
@@ -371,158 +369,405 @@
             }
 
             .s3bcard3
-                {
-    position:absolute;
-    right:50px;
-    top:120px;
-    width:400px;
-    height:500px;
-    padding-top:100px;
-    transition:all 0.5s linear;
-    transform: translateX(500px);
-    opacity:0;
-}
+            {
+                width:400px;
+                height:500px;
+                padding-top:100px;
+                transition:all 0.5s linear;
+                font-size: 15px;
+            }
 
-.uhimg
-{
-    position: relative;
-    width:400px;
-    height:250px;
-    background: black;
-    z-index:2;
-}
+            .uhimg
+            {
+                position: relative;
+                width:400px;
+                height:250px;
+                background: white;
+                z-index:2;
+            }
 
-.uhimg::after
-{
-    content:"";
-    position: absolute;
-    top:-10%;
-    left:5%;
-    width:90%;
-    height:100%;
-    background:#8ee4af;
-}
+            .uhimg::after
+            {
+                content:"";
+                position: absolute;
+                top:-10%;
+                left:5%;
+                width:90%;
+                height:100%;
+                background: url("rcar.jpg");
+                background-position: center;
+                background-size: 100% 100%;
+            }
 
-.s3bcard3:hover .uhimg::after
-{
-    position: absolute;
-    top:-40px;
-    left:75px;
-    width:250px;
-    height:250px;
-    transform-origin:top center;
-    animation:tada 2s linear;
-}
+            .s3bcard3:hover .uhimg::after
+            {
+                position: absolute;
+                top:-40px;
+                left:75px;
+                width:250px;
+                height:250px;
+                transform-origin:top center;
+                animation:tada 2s linear;
+            }
 
-@keyframes tada {
-    from {
-      -webkit-transform: scale3d(1, 1, 1);
-      transform: scale3d(1, 1, 1);
-    }
+            @keyframes tada {
+                from {
+                -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
+                }
 
-    10%,
-    20% {
-      -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
-      transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
-    }
+                10%,
+                20% {
+                -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+                transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+                }
 
-    30%,
-    50%,
-    70%,
-    90% {
-      -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-    }
+                30%,
+                50%,
+                70%,
+                90% {
+                -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+                transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+                }
 
-    40%,
-    60%,
-    80% {
-      -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-    }
+                40%,
+                60%,
+                80% {
+                -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+                transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+                }
 
-    to {
-      -webkit-transform: scale3d(1, 1, 1);
-      transform: scale3d(1, 1, 1);
-    }
-  }
+                to {
+                -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
+                }
+            }
 
-.condiv3
-{
-    position: relative;
-    width:400px;
-    height:0;
-    background:black;
-    transition:all 0.2s linear;
-    z-index:1;
-}
+            .condiv3
+            {
+                position: relative;
+                width:400px;
+                height:0;
+                background:white;
+                transition:all 0.2s linear;
+                z-index:1;
+            }
 
-.hiddiv
-{
-    position: absolute;
-    left:50px;
-    top:-250px;
-    width:300px;
-    height:200px;
-    text-align: center;
-    background-color: black;
-    color: white;
-    transition:all 0.2s linear;
-}
+            .hiddiv
+            {
+                position: absolute;
+                left:50px;
+                top:-250px;
+                width:300px;
+                height:200px;
+                text-align: center;
+                background-color: white;
+                color: black;
+                transition:all 0.2s linear;
+            }
 
 
-.bcdiv3
-{
-   position: relative;
-   top:-10px;
-    width:400px;
-    height:70px;
-    background:black;
-    border-top: 1px solid white;
-    z-index:3;
-}
-
-.bcdiv3 h1
-{
-position:absolute;
-top:0;
-left:40%;
-}
-
-.bcdiv3 div
-{
-position:absolute;
-bottom:10px;
-left:20%;
-}
-
-.tag1,.tag2,.tag3
-{
-    display:inline-flex;
-    width:80px;
-    height:30px;
-    background:orangered;
-    border-radius:5px;
-    justify-content: center;
-    align-items: center;
-}
+            .bcdiv3
+            {
+                width:400px;
+                height:70px;
+                background:white;
+                border-top: 1px solid black;
+                z-index:3;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
 
 
+            .s3bcard3:hover .condiv3
+            {
+            height:200px;
+            }
 
-.s3bcard3:hover .condiv3
-{
-  height:200px;
-}
+            .s3bcard3:hover
+            {
+                padding-top: 0%;
+            }
 
-.s3bcard3:hover
-{
-    padding-top: 0%;
-}
+            .s3bcard3:hover .hiddiv
+            {
+                top:0px;
+            }
 
-.s3bcard3:hover .hiddiv
-{
-    top:0px;
-}
+            .btn1{
+                width:200px;
+                height:40px;
+                background-color: #45AF3B;
+                color:white;
+                font-size: 100%;
+                border:none;
+                outline: none;
+                font-weight: 300;
+                cursor:pointer;
+                border-radius: 5px;
+                box-shadow: 0px 2px 3px 3px grey;
+            }
+
+            .s3bcard2
+            {
+                width:400px;
+                height:500px;
+                padding-top:100px;
+                transition:all 0.5s linear;
+                font-size: 15px;
+            }
+
+            .uhimg
+            {
+                position: relative;
+                width:400px;
+                height:250px;
+                background: white;
+                z-index:2;
+            }
+
+            .uhimg::after
+            {
+                content:"";
+                position: absolute;
+                top:-10%;
+                left:5%;
+                width:90%;
+                height:100%;
+                background: url("rcar.jpg");
+                background-position: center;
+                background-size: 100% 100%;
+            }
+
+            .s3bcard2:hover .uhimg::after
+            {
+                position: absolute;
+                top:-40px;
+                left:75px;
+                width:250px;
+                height:250px;
+                transform-origin:top center;
+                animation:wobble 2s linear;
+            }
+
+            @keyframes wobble {
+                from {
+                  -webkit-transform: translate3d(0, 0, 0);
+                  transform: translate3d(0, 0, 0);
+                }
+            
+                15% {
+                  -webkit-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+                  transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+                }
+            
+                30% {
+                  -webkit-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+                  transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+                }
+            
+                45% {
+                  -webkit-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+                  transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+                }
+            
+                60% {
+                  -webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+                  transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+                }
+            
+                75% {
+                  -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+                  transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+                }
+            
+                to {
+                  -webkit-transform: translate3d(0, 0, 0);
+                  transform: translate3d(0, 0, 0);
+                }
+              }
+
+            .condiv2
+            {
+                position: relative;
+                width:400px;
+                height:0;
+                background:white;
+                transition:all 0.2s linear;
+                z-index:1;
+            }
+
+            .hiddiv
+            {
+                position: absolute;
+                left:50px;
+                top:-250px;
+                width:300px;
+                height:200px;
+                text-align: center;
+                background-color: white;
+                color: black;
+                transition:all 0.2s linear;
+            }
+
+
+            .bcdiv2
+            {
+                width:400px;
+                height:70px;
+                background:white;
+                border-top: 1px solid black;
+                z-index:3;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+            .s3bcard2:hover .condiv2
+            {
+            height:200px;
+            }
+
+            .s3bcard2:hover
+            {
+                padding-top: 0%;
+            }
+
+            .s3bcard2:hover .hiddiv
+            {
+                top:0px;
+            }
+
+            .s3bcard1
+            {
+                width:400px;
+                height:500px;
+                padding-top:100px;
+                transition:all 0.5s linear;
+                font-size: 15px;
+            }
+
+            .uhimg
+            {
+                position: relative;
+                width:400px;
+                height:250px;
+                background: white;
+                z-index:2;
+            }
+
+            .uhimg::after
+            {
+                content:"";
+                position: absolute;
+                top:-10%;
+                left:5%;
+                width:90%;
+                height:100%;
+                background: url("rcar.jpg");
+                background-position: center;
+                background-size: 100% 100%;
+            }
+
+            .s3bcard1:hover .uhimg::after
+            {
+                position: absolute;
+                top:-40px;
+                left:75px;
+                width:250px;
+                height:250px;
+                transform-origin:top center;
+                animation: bounce 2s linear;
+            }
+
+            @keyframes bounce {
+                from,
+                20%,
+                53%,
+                80%,
+                to {
+                  -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+                  animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+                  -webkit-transform: translate3d(0, 0, 0);
+                  transform: translate3d(0, 0, 0);
+                }
+            
+                40%,
+                43% {
+                  -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+                  animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+                  -webkit-transform: translate3d(0, -50px, 0);
+                  transform: translate3d(0, -50px, 0);
+                }
+            
+                70% {
+                  -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+                  animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+                  -webkit-transform: translate3d(0, -15px, 0);
+                  transform: translate3d(0, -15px, 0);
+                }
+            
+                90% {
+                  -webkit-transform: translate3d(0, -4px, 0);
+                  transform: translate3d(0, -4px, 0);
+                }
+              }
+            
+            
+            .condiv1
+            {
+                position: relative;
+                width:400px;
+                height:0;
+                background:white;
+                transition:all 0.2s linear;
+                z-index:1;
+            }
+
+            .hiddiv
+            {
+                position: absolute;
+                left:50px;
+                top:-250px;
+                width:300px;
+                height:200px;
+                text-align: center;
+                background-color: white;
+                color: black;
+                transition:all 0.2s linear;
+            }
+
+
+            .bcdiv1
+            {
+                width:400px;
+                height:70px;
+                background:white;
+                border-top: 1px solid black;
+                z-index:3;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+            .s3bcard1:hover .condiv1
+            {
+            height:200px;
+            }
+
+            .s3bcard1:hover
+            {
+                padding-top: 0%;
+            }
+
+            .s3bcard1:hover .hiddiv
+            {
+                top:0px;
+            }
+            
             @keyframes rotate{
                 0%{
                     transform: rotate(0deg);
