@@ -70,6 +70,7 @@ io.on('connection', function(socket) {
 
 
    socket.on('check-waiting',(name)=>{
+      console.log(waiting)
       if(waiting.length >= 3){
          for(var h=0;h<=2;h++){
             inmatch.push({'roomno':"room"+n,"name":waiting[h][0],'ranno':5});
