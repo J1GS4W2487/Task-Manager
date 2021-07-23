@@ -125,7 +125,8 @@
             var name = document.getElementById("myname").value;
             socket.emit('new-user-joined',name);
             document.querySelector(".name-alert").setAttribute("style","display:none");
-
+            document.querySelector("header").setAttribute("style","display:block");
+            document.querySelector("main").setAttribute("style","display:flex");
         }
 
         practice=()=>{

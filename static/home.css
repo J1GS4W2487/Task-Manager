@@ -23,6 +23,7 @@
                 font-size: 20%;
                 position: relative;
                 padding-top: 20px;
+                display: none;
             }
 
             header h1{
@@ -75,6 +76,7 @@
                 transition: all 0.3s ease-in-out;
                 font-size: 20px;
                 font-weight: bold;
+                animation: u 2s ease infinite;
             }
 
             .name-box button i{
@@ -123,7 +125,7 @@
             main{
                 height:85vh;
                 width:100%;
-                display: flex;
+                display: none;
                 justify-content: space-around;
             }
 
