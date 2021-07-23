@@ -91,6 +91,8 @@
     <script src ="https://typeracersp.herokuapp.com/socket.io/socket.io.js"></script>
    
     <script>
+
+        var name;
         const socket = io('https://typeracersp.herokuapp.com');
 
         // const name = prompt("enter your name to join");
@@ -121,14 +123,18 @@
         }
         });
 
+
+        
         function entrace(){
-            var name = document.getElementById("myname").value;
+            name = document.getElementById("myname").value;
             console.log(name,document.getElementById("myname").value);
             socket.emit('new-user-joined',name);
             document.querySelector(".name-alert").setAttribute("style","display:none");
             document.querySelector("header").setAttribute("style","display:block");
             document.querySelector("main").setAttribute("style","display:flex");
         }
+
+        
 
         practice=()=>{
             window.location.replace(`/practice?c=Beginner`);
