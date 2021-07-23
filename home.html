@@ -9,6 +9,31 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <link rel="stylesheet" href="home.css">
     </head>
+    <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+        
+        li {
+          float: left;
+        }
+        
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover {
+          background-color: #111;
+        }
+        </style>
     <body>
         <div class="alert" >
             <div class="center-msg">
@@ -20,76 +45,85 @@
         <div class="name-alert">
             <div class="name-box">
                 <div><h1>TYPERACER</h1></div>
-                <div><label>At Pole Position ?</label></div>
-            <div><input type="text" placeholder="Your Name" id="myname"></div>
+                <div><label>AT POLE POSITION ?</label></div>
+            <div><input type="text" placeholder="your name" id="myname" ></div>
                 <div><button type="submit" onclick="entrace()">Enter the Grand Prix <i class="fas fa-flag-checkered" color="black"></i></button></div>
             </div>
         </div>
         
         <header>
-            <h1>typeracer</h1>
-            <div><p>active users</p><span class="total">0</span></div>
+            <ul>
+                
+                <li>TYPERACER</li>
+                <li ><a href="leaderboard.html">Leaderboard</a></li>
+                <li>Active Users<span class="total"> 0</span></li>
+              </ul>
+        
+            <div><p> active users   </p><span class="total">0</span></div>
         </header>
 
 
 
         <main>
+          
             <div class="adj">
                 <div class="s3bcard3">
-                    <div class="uhimg">
+                    <div class="uhimg1">
                     </div>
+                    
 
                     <div class="condiv3">
                         <div class="hiddiv">
                             <h1>
-                                TYPING RACE!
+                                Start the Lap!
                             </h1>
                             <p>
-                                here you will be match with random players all around the world and you will play a match with them.
-                            </p>
+                               Here, you will be matched with three opponents from aroud the world, online. Show your caliber and prove that you are the ultimate typeracer. Also,check your global rank on the Leaderboard.      </p>
                             </div>
-                    </div>
+                 
+                </div>
+
 
                     <div class="bcdiv3">
-                        <button class="btn1" onclick="waiting()">ENTER A TYPING RACE!</button>
+                        <button class="btn1" onclick="waiting()">ENTER A TYPING RACE</button>
                     </div>
                 </div>
                 </div>
-
+               
             <div class="adj">
                 <div class="s3bcard2">
-                    <div class="uhimg">
+                    <div class="uhimg2">
                     </div>
 
                     <div class="condiv2">
                         <div class="hiddiv">
                             <h1>
-                                TYPING RACE!
+                                Grind Your Gears!
                             </h1>
                             <p>
-                                here you will be match with random players all around the world and you will play a match with them.
+                            Practice your skills offline, and set the difficulty level as per your choice, because after all, practice makes a man perfect. Once you are ready, shoot for the stars and go for the Gold.
                             </p>
                             </div>
                     </div>
 
                     <div class="bcdiv2">
-                        <button class="btn2" onclick="practice()">ENTER PRACTICE RACE!</button>
+                        <button class="btn2" onclick="practice()">ENTER A PRACTICE RACE</button>
                     </div>
                 </div>
             </div>
 
             <div class="adj">
                 <div class="s3bcard1">
-                    <div class="uhimg">
+                    <div class="uhimg3">
                     </div>
 
                     <div class="condiv1">
                         <div class="hiddiv">
                             <h1>
-                                TYPING RACE!
+                                GOT SKILLS!
                             </h1>
                             <p>
-                                here you will be match with random players all around the world and you will play a match with them.
+                                Race among your friends in an online lobby. The time limit makes the game more interesting. The racer who wins the race, will be declared as the ultimate typeracing champion among friends.
                             </p>
                             </div>
                     </div>
@@ -141,11 +175,17 @@
         
         function entrace(){
             name = document.getElementById("myname").value;
+            if(name==''){
+                alert("All Racers have a Name !");
+            }
+            else{
             console.log(name,document.getElementById("myname").value);
             socket.emit('new-user-joined',name);
             document.querySelector(".name-alert").setAttribute("style","display:none");
             document.querySelector("header").setAttribute("style","display:block");
             document.querySelector("main").setAttribute("style","display:flex");
+            }
+            
         }
 
         

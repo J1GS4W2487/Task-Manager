@@ -10,14 +10,15 @@
                 height:100vh;
                 font-family: sans-serif;
                 font-size: 100px;
-                background-color: #182627;
+                background-image: url("hihi.jpg");
                 overflow: hidden;
+                background-size: 100% 100%;
             }
 
             header{
                 width:100%;
                 height:15vh;
-                background-color: orchid;
+                background-color: transparent;
                 color:white;
                 text-transform: uppercase;
                 font-size: 20%;
@@ -34,6 +35,7 @@
 
             .name-alert{
               
+                font-size: 120px;
                 width:100%;
                 height:100vh;
                 position: fixed;
@@ -47,9 +49,10 @@
             }
 
             .name-box{
+                font-size: 100px;
                 position: absolute;
-                top: 130px;
-                left: 50px;
+                top: 260px;
+                left: 90px;
                 width:400px;
                 height:250px;
                 display: flex;
@@ -63,7 +66,7 @@
             }
             .name-box h1{
                 color: white;
-                font-size: 35px;
+                font-size: 70px;
             }
 
             .name-box button{
@@ -129,6 +132,8 @@
                 justify-content: space-around;
             }
 
+
+
             .adj{
                 height:100%;
                 width:33.33333%;
@@ -140,7 +145,7 @@
             .card{
                 width:400px;
                 height:400px;
-                background-color: whitesmoke;
+                background-color: black;
                 border-radius: 20px;
             }
 
@@ -154,7 +159,7 @@
             .card .card-content a{
                 width:400px;
                 height:400px;
-                background-color: whitesmoke;
+                background-color: black;
                 border-radius: 20px;
             }
             .card .card-content a:hover{
@@ -167,10 +172,10 @@
                 flex-direction: column;
                 align-items: center;
                 font-size: 25%;
-                background-color:#FAFAFA ;
+                background-color:black;
                 overflow: hidden;
             }
-
+/* 
             .btn1{
                 width:300px;
                 height:50px;
@@ -184,6 +189,15 @@
                 margin-top: 5%;
                 border-radius: 5px;
                 box-shadow: 0px 2px 3px 3px #D5D5D5;
+            } */
+
+            .btn1 a{
+                text-decoration: none;
+                color:white;
+            }
+
+            .btn1:hover{
+                background-color: #003A61;
             }
 
             #card1 p{
@@ -196,10 +210,7 @@
                 font-size: 90%;
             }
 
-            .btn1:hover {
-                background-color: #3D8B40;
-            }
-
+           
             
 
             .car{
@@ -370,6 +381,7 @@
 
             .s3bcard3
             {
+                color: white;
                 width:400px;
                 height:500px;
                 padding-top:100px;
@@ -377,7 +389,7 @@
                 font-size: 15px;
             }
 
-            .uhimg
+            .uhimg1
             {
                 position: relative;
                 width:400px;
@@ -386,7 +398,7 @@
                 z-index:2;
             }
 
-            .uhimg::after
+            .uhimg1::after
             {
                 content:"";
                 position: absolute;
@@ -394,12 +406,12 @@
                 left:5%;
                 width:90%;
                 height:100%;
-                background: url("rcar.jpg");
-                background-position: center;
+                background: url("first.jpg");
+                background-position: flex;
                 background-size: 100% 100%;
             }
 
-            .s3bcard3:hover .uhimg::after
+            .s3bcard3:hover .uhimg1::after
             {
                 position: absolute;
                 top:-40px;
@@ -496,9 +508,11 @@
             }
 
             .btn1{
+                text-decoration: none;
+                text-align: center;
                 width:200px;
                 height:40px;
-                background-color: #45AF3B;
+                background-color: darkgoldenrod;
                 color:white;
                 font-size: 100%;
                 border:none;
@@ -518,7 +532,7 @@
                 font-size: 15px;
             }
 
-            .uhimg
+            .uhimg2
             {
                 position: relative;
                 width:400px;
@@ -527,7 +541,7 @@
                 z-index:2;
             }
 
-            .uhimg::after
+            .uhimg2::after
             {
                 content:"";
                 position: absolute;
@@ -535,12 +549,12 @@
                 left:5%;
                 width:90%;
                 height:100%;
-                background: url("rcar.jpg");
+                background: url("imgfr.jpg");
                 background-position: center;
                 background-size: 100% 100%;
             }
 
-            .s3bcard2:hover .uhimg::after
+            .s3bcard2:hover .uhimg2::after
             {
                 position: absolute;
                 top:-40px;
@@ -609,6 +623,8 @@
                 background-color: white;
                 color: black;
                 transition:all 0.2s linear;
+                text-align:justify;
+                text-justify:auto;
             }
 
 
@@ -649,7 +665,7 @@
                 font-size: 15px;
             }
 
-            .uhimg
+            .uhimg3
             {
                 position: relative;
                 width:400px;
@@ -658,7 +674,7 @@
                 z-index:2;
             }
 
-            .uhimg::after
+            .uhimg3::after
             {
                 content:"";
                 position: absolute;
@@ -666,12 +682,12 @@
                 left:5%;
                 width:90%;
                 height:100%;
-                background: url("rcar.jpg");
+                background: url("img1.jpg");
                 background-position: center;
                 background-size: 100% 100%;
             }
 
-            .s3bcard1:hover .uhimg::after
+            .s3bcard1:hover .uhimg3::after
             {
                 position: absolute;
                 top:-40px;
