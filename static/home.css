@@ -72,13 +72,22 @@
                 border: none;
                 outline: none;
                 cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .name-box button i{
+                color: white;
             }
 
             
             .name-box button:hover{
               
                 color: white;
-                background-color:green;
+                border-color: black;
+                background-color:mediumseagreen;
+                transition: all 0.3s ease;
             }
             
             .name-box label{
@@ -189,7 +198,7 @@
                 background-color: #3D8B40;
             }
 
-
+            
 
             .car{
                 font-family: Ubuntu;
@@ -200,6 +209,7 @@
                 height:40%;
                 z-index: 10;
             }
+
 
      
 
@@ -358,6 +368,159 @@
                 /* animation: rotate 1.5s linear infinite; */
             }
 
+            .s3bcard3
+                {
+    position:absolute;
+    right:50px;
+    top:120px;
+    width:400px;
+    height:500px;
+    padding-top:100px;
+    transition:all 0.5s linear;
+    transform: translateX(500px);
+    opacity:0;
+}
+
+.uhimg
+{
+    position: relative;
+    width:400px;
+    height:250px;
+    background: black;
+    z-index:2;
+}
+
+.uhimg::after
+{
+    content:"";
+    position: absolute;
+    top:-10%;
+    left:5%;
+    width:90%;
+    height:100%;
+    background:#8ee4af;
+}
+
+.s3bcard3:hover .uhimg::after
+{
+    position: absolute;
+    top:-40px;
+    left:75px;
+    width:250px;
+    height:250px;
+    transform-origin:top center;
+    animation:tada 2s linear;
+}
+
+@keyframes tada {
+    from {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+
+    10%,
+    20% {
+      -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+      transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    }
+
+    30%,
+    50%,
+    70%,
+    90% {
+      -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+
+    40%,
+    60%,
+    80% {
+      -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+
+    to {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  }
+
+.condiv3
+{
+    position: relative;
+    width:400px;
+    height:0;
+    background:black;
+    transition:all 0.2s linear;
+    z-index:1;
+}
+
+.hiddiv
+{
+    position: absolute;
+    left:50px;
+    top:-250px;
+    width:300px;
+    height:200px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    transition:all 0.2s linear;
+}
+
+
+.bcdiv3
+{
+   position: relative;
+   top:-10px;
+    width:400px;
+    height:70px;
+    background:black;
+    border-top: 1px solid white;
+    z-index:3;
+}
+
+.bcdiv3 h1
+{
+position:absolute;
+top:0;
+left:40%;
+}
+
+.bcdiv3 div
+{
+position:absolute;
+bottom:10px;
+left:20%;
+}
+
+.tag1,.tag2,.tag3
+{
+    display:inline-flex;
+    width:80px;
+    height:30px;
+    background:orangered;
+    border-radius:5px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.s3bcard3:hover .condiv3
+{
+  height:200px;
+}
+
+.s3bcard3:hover
+{
+    padding-top: 0%;
+}
+
+.s3bcard3:hover .hiddiv
+{
+    top:0px;
+}
             @keyframes rotate{
                 0%{
                     transform: rotate(0deg);
