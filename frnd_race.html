@@ -50,7 +50,6 @@
                     <div class="place" id="place1">
                         2nd place
                     </div>
-                    
                     <div class="speed" id="speed1">
                         0 wpm
                     </div>
@@ -83,7 +82,7 @@
                     <option class="coder">coder</option>
                 </select> -->
 
-                <a href="/leader" class="btn2">Leaderboard <i class="fas fa-chevron-circle-right"></i></a>
+                <a onclick="leaderboard()" class="btn2">Leaderboard <i class="fas fa-chevron-circle-right"></i></a>
             </div>
             <div class="final-msg">
                 <h1 class="head">Welcome to the Podium !</h1>
@@ -117,27 +116,27 @@
         var room = url.searchParams.get("room");
         var random_num = url.searchParams.get("num");
 
-        socket.emit('match-start', {'pos': 0,'speed': 0,'place':null,'name':name,'roomno':room});
+        socket.emit('frnd_racestart', {'pos': 0,'speed': 0,'place':null,'name':name,'roomno':room});
 
-        socket.on('match-start', (data)=>{
+        socket.on('frnd_racestart', (data)=>{
             var b=0;
             console.log(data)
-            if(data.roomno == room){
-            for(var k=0;k<=2;k++){
-                if(data[0][k].name != name){
-                    b++;
-                    document.getElementById("player"+b).innerHTML = data[0][k].name;
-                    if(data[0][k].speed){
-                    document.getElementById("place"+b).innerHTML = data[0][k].place;
-                    document.getElementById("speed"+b).innerHTML = `${Math.floor(data[0][k].speed)} wpm`;
-                    document.getElementById("car"+b).setAttribute("style",`left:${data[0][k].pos}%`);
+            data.forEach(element => {
+                if(element.roomno == room){
+                    if(element.name != name){
+                        b++;
+                        document.getElementById("player"+b).innerHTML = element.name;
+                        if(element.speed){
+                        document.getElementById("place"+b).innerHTML = element.place;
+                        document.getElementById("speed"+b).innerHTML = `${Math.floor(element.speed)} wpm`;
+                        document.getElementById("car"+b).setAttribute("style",`left:${element.pos}%`);
+                        }
                     }
                 }
-            }
-        }
+            });
         });
 
-        socket.on('score-update', (data)=>{
+        socket.on('fscore-update', (data)=>{
             var b=0;
             for(var k=0;k<=2;k++){
             if(data[0][k].name != name){
@@ -174,6 +173,7 @@
         var sinc = 0;
         window.onload=()=>{
         var sint=setInterval(() => {
+            document.querySelector(".btn2").setAttribute("href",window.location);
                 sinc++;
                 document.querySelector(".stime").innerHTML=`:0${4-sinc}`;
                 if(sinc == 1){
@@ -208,14 +208,14 @@
                 }
             },1000);
         }
-        var Beginner = ["I mean, nobody wishes more than I do that it had all been quick and clean",
+        var Beginner = ["I mean, nobody wishes more than I do that it had all been quick and clean, and my head had come off properly, I mean, it would have saved me a great deal of pain and ridicule. However -'We can only accept huntsmen whose heads have parted company with their bodies. You will appreciate that it would be impossible otherwise for members to participate in hunt activities such as Horseback Head-Juggling and Head Polo. It is with the greatest regret, therefore, that I must inform you that you do not fulfill our requirements. With very best wishes, Sir Patrick Delaney-Podmore.",
                         "Mrs. Norris, but not quickly enough. Drawn to the spot by the mysterious power that seemed to connect him with his foul cat, Argus Filch burst suddenly through a tapestry to Harry's right, wheezing and looking wildly about for the rule-breaker. There was a thick tartan scarf bound around his head, and his nose was unusually purple. He shouted, his jowls aquiver, his eyes popping alarmingly as he pointed at the muddy puddle that had dripped from Harry's Quidditch robes which are crimson in color and the most prettiest of them all among all the houses",
                         "Peeves was the school poltergeist, a grinning, airborne menace who lived to cause havoc and distress. Harry didn't much like Peeves, but couldn't help feeling grateful for his timing. Hopefully, whatever Peeves had done (and it sounded as though he'd wrecked something very big this time) would distract Filch from Harry. Thinking that he should probably wait for Filch to come back, Harry sank into a moth-eaten chair next to the desk. There was only one thing on it apart from his half-completed form: a large, glossy, purple envelope with silver lettering on the front. ",
                         "Intrigued, Harry flicked the envelope open and pulled out the sheaf of parchment inside. More curly silver writing on the front page said: Feel out of step in the world of modern magic? Find yourself making excuses not to perform simple spells? Ever been taunted for your woeful wandwork? There is an answer! Kwikspell is an all-new, fail-safe, quick-result, easy-learn course. Hundreds of witches and wizards have benefited from the Kwikspell method! Madam Z. Nettles of Topsham writes , I had no memory for incantations and my potions were a family joke! Now, after a Kwikspell course, I am the center of attention at parties",
                         "Fascinated, Harry thumbed through the rest of the envelope's contents. Why on earth did Filch want a Kwikspell course? Did this mean he wasn't a proper wizard? Harry was just reading Lesson One: Holding Your Wand (Some Useful Tips) when shuffling footsteps outside told him Filch was coming back. Stuffing the parchment back into the envelope, Harry threw it back onto the desk just as the door opened the grandmaster had ordered the students to pursue quidditch as the most imporatnt sport of the games present in the College.",
                         "Rain was still lashing the windows, which were now inky black, but inside all looked bright and cheerful. The firelight glowed over the countless squashy armchairs where people sat reading, talking, doing homework or, in the case of Fred and George Weasley, trying to find out what would happen if you fed a Filibuster firework to a salamander. Fred had rescued the brilliant orange, fire-dwelling lizard from a Care of Magical Creatures class and it was now smouldering gently on a table surrounded by a knot of curious people.",
                         "After lunch they went to the reptile house. It was cool and dark in there, with lit windows all along the walls. Behind the glass, all sorts of lizards and snakes were crawling and slithering over bits of wood and stone. Dudley and Piers wanted to see huge, poisonous cobras and thick, man-crushing pythons. Dudley quickly found the largest snake in the place. It could have wrapped its body twice around Uncle Vernon's car ",
-                        "When he was dressed he went down the hall into the kitchen. The table was almost hidden beneath all Dudley's birthday presents. It looked as though Dudley had gotten the new computer he wanted, not to mention the second television and the racing bike. Exactly why Dudley wanted a racing bike was a mystery to Harry, as Dudley was very fat and hated exercise - unless of course it involved punching somebody in the wall."];
+                        "When he was dressed he went down the hall into the kitchen. The table was almost hidden beneath all Dudley's birthday presents. It looked as though Dudley had gotten the new computer he wanted, not to mention the second television and the racing bike. Exactly why Dudley wanted a racing bike was a mystery to Harry, as Dudley was very fat and hated exercise - unless of course it involved punching somebody in the wall.",];
 
 
         var i = 0;
@@ -234,16 +234,9 @@
         }
 
         function start(){
-
-
             document.querySelector(".alert").setAttribute("style","display:none");
             c++;
             sec = 60 - c;
-
-
-
-            
-
             if(c == 60){
                 c=0;
               if(min!=0){
@@ -272,7 +265,7 @@
                         document.querySelector(".final_time").innerHTML = et+"sec";
                     }
                     finalscu = ((totalacu-errors)/totalacu)*100;
-                    socket.emit('score-update', {'pos': rc,'speed': sinc,'place': "unfinished",'name':name,'roomno':room,'id':socket.id});
+                    socket.emit('fscore-update', {'pos': rc,'speed': sinc,'place': "unfinished",'name':name,'roomno':room,'id':socket.id});
                     clearTimeout(stop);
                 },60000);
             }
@@ -281,6 +274,9 @@
             document.querySelector(".time").innerHTML=`${min}:${sec}`;
         }
 
+        leaderboard=()=>{
+            window.location.replace(`/leader`);
+        }
 
         function times()
         {
@@ -292,7 +288,7 @@
            sinc = wpm;
            rc =  document.getElementById("car0").style.left.split("%")[0];
 
-           socket.emit('score-update', {'pos': rc,'speed': sinc,'place':null,'name':name,'roomno':room,'id':socket.id});
+           socket.emit('fscore-update', {'pos': rc,'speed': sinc,'place':null,'name':name,'roomno':room,'id':socket.id});
         }
 
         document.querySelector(".answer").addEventListener("keydown",(e)=>{
@@ -305,7 +301,7 @@
 
             document.querySelector(".car").setAttribute("style",`left:${rc}%`);
 
-            socket.emit('score-update', {'pos': rc,'speed': sinc,'place':null,'name':name,'roomno':room,'id':socket.id});
+            socket.emit('fscore-update', {'pos': rc,'speed': sinc,'place':null,'name':name,'roomno':room,'id':socket.id});
 
             if(val == " "){
                 document.querySelector(".answer").value=""; 
@@ -340,12 +336,11 @@
             if(val == res[(res.length-1)]){
                 i=0;
                 var ftime = et - 60;
-                socket.emit('score-update', {'pos': rc,'speed': sinc,'place': "finished",'name':name,'roomno':room,'id':socket.id});
+                socket.emit('fscore-update', {'pos': rc,'speed': sinc,'place': "finished",'name':name,'roomno':room,'id':socket.id});
 
                 document.querySelector(".final-msg").setAttribute("style","display:flex");
                 document.querySelector(".final_speed").innerHTML = Math.floor(sinc)+"wpm";
                 document.querySelector(".final_time").innerHTML = et+"sec";
-                socket.emit("checklb",{speed: Math.floor(sinc),name:name});
                 finalscu = ((totalacu-errors)/totalacu)*100;
                 if(Math.floor(sinc) != 0){
                     document.querySelector(".speed").innerHTML = Math.floor(sinc)+"wpm";
@@ -374,9 +369,5 @@
             }
             }
         });
-
-        leaderboard=()=>{
-            window.location.replace(`/leader`);
-        }
     </script>
 </html>

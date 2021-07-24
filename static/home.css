@@ -15,6 +15,29 @@
                 background-size: 100% 100%;
             }
 
+            .leader{
+                text-decoration: none;
+                text-align: center;
+                width:200px;
+                height:40px;
+                background-color: #005894;
+                color:white;
+                font-size: 15px;
+                border:none;
+                outline: none;
+                font-weight: 300;
+                cursor:pointer;
+                border-radius: 5px;
+                box-shadow: 0px 2px 3px 3px grey;
+                transition:all 0.3s ease;
+                cursor: pointer;
+                margin-left: 5%;
+            }
+
+            .leader button:hover{
+                color: #005894;
+            }
+
             header{
                 width:100%;
                 height:15vh;
@@ -27,12 +50,20 @@
                 display: none;
             }
 
+            .typer{
+                left: 675px;
+
+            }
+
             header h1{
                 position: absolute;
                 left:50px;
                 transform: translateY(-505);
             }
 
+        .active{
+            right: 5%;
+        }
             .name-alert{
               
                 font-size: 120px;
@@ -265,7 +296,7 @@
                 height:40px;
                 background-color: #005894;
                 color:white;
-                font-size: 100%;
+                font-size: 15px;
                 border:none;
                 outline: none;
                 font-weight: 300;
@@ -318,7 +349,7 @@
                 height:40px;
                 background-color:mediumorchid;
                 color:white;
-                font-size: 100%;
+                font-size: 15px;
                 border:none;
                 outline: none;
                 font-weight: 300;
@@ -793,3 +824,42 @@
                     transform: rotate(360deg);
                 }
             }
+
+            .frnd-alert{
+                width:100%;
+                height:100vh;
+                background-color: rgba(0, 0, 0, 0.6);
+                display:none;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .center-div{
+                width:500px;
+                height:300px;
+                background-color: white;
+                display: flex;
+                flex-direction: column;
+                border-radius: 10px;
+
+            }
+
+            .center-div div{
+                width: 100%;
+                height:33.33%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .center-div div h1{
+                font-size: 50px;
+            }
+
+            .center-div div input{
+                font-size: 25px;
+                text-align: center;
+            }
+
+   
+            

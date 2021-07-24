@@ -11,15 +11,30 @@ margin:0;
 padding:0;
 }
 
+body{
+             width:100%;
+                height:100vh;
+                font-family: sans-serif;
+           
+                background-image: url("b1.jpg");
+                overflow: hidden;
+                background-size: 100% 100%;
+            }
+
 h1
 {
+  font-size: 70px;
 text-transform:uppercase;
-color:green;
+color: orange;
 width:100%;
 height:10vh;
 display:flex;
-justify-content:center;
+justify-content:left;
 align-items:center;
+position:relative;
+top: 40px;
+left: 100px;
+
 }
 
 #mytable
@@ -68,7 +83,7 @@ font-weight:1000;
 </style>
 </head>
 <body>
-<h1>TOP 10 VELE LOG</h1>
+<h1 >Leaderboard</h1>
 
 <table id="mytable">
 
@@ -80,79 +95,78 @@ font-weight:1000;
 
 <tr id="pos1">
   <td class="name">tejas</td>
-  <td class="speed">1000 wpm</td>
-  <td class="time">1:00pm 1/1/2002</td>
+  <td class="speed">54 wpm</td>
+  <td class="time">23/7/2021</td>
 </tr>
 
 <tr id="pos2">
   <td class="name">tejas</td>
-  <td class="speed">1000 wpm</td>
-  <td class="time">1:00pm 1/1/2002</td>
+  <td class="speed">52 wpm</td>
+  <td class="time">23/7/2002</td>
 </tr>
 
 <tr id="pos3">
-  <td class="name">tejas</td>
-  <td class="speed">1000 wpm</td>
-  <td class="time">1:00pm 1/1/2002</td>
+  <td class="name">shivam</td>
+  <td class="speed">50 wpm</td>
+  <td class="time">22/7/2021</td>
 </tr>
 
 <tr id="pos4">
-  <td class="name">tejas</td>
-  <td class="speed">1000 wpm</td>
-  <td class="time">1:00pm 1/1/2002</td>
+  <td class="name">user1</td>
+  <td class="speed"> 48wpm</td>
+  <td class="time"> 20/7/2021</td>
 </tr>
 
 
 <tr id="pos5">
   <td class="name">tejas</td>
-  <td class="speed">1000 wpm</td>
-  <td class="time">1:00pm 1/1/2002</td>
+  <td class="speed">45 wpm</td>
+  <td class="time">22/7/2021</td>
 </tr>
 
 
 <tr id="pos6">
   <td class="name">tejas</td>
-  <td class="speed">1000 wpm</td>
-  <td class="time">1:00pm 1/1/2002</td>
+  <td class="speed">41 wpm</td>
+  <td class="time">22/7/2021</td>
 </tr>
 
 
 <tr id="pos7">
-  <td class="name">tejas</td>
-  <td class="speed">1000 wpm</td>
-  <td class="time">1:00pm 1/1/2002</td>
+  <td class="name">shivam</td>
+  <td class="speed">39 wpm</td>
+  <td class="time">24/7/2021</td>
 </tr>
 
 <tr id="pos8">
-  <td class="name">tejas</td>
-  <td class="speed">1000 wpm</td>
-  <td class="time">1:00pm 1/1/2002</td>
+  <td class="name">amay</td>
+  <td class="speed">37 wpm</td>
+  <td class="time">23/7/2021</td>
 </tr>
 
 <tr id="pos9">
-  <td class="name">tejas</td>
-  <td class="speed">1000 wpm</td>
-  <td class="time">1:00pm 1/1/2002</td>
+  <td class="name">user4</td>
+  <td class="speed">35 wpm</td>
+  <td class="time">24/7/2021</td>
 </tr>
 
 <tr id="pos10">
-  <td class="name">tejas</td>
-  <td class="speed">1000 wpm</td>
-  <td class="time">1:00pm 1/1/2002</td>
+  <td class="name">user5</td>
+  <td class="speed">18 wpm</td>
+  <td class="time">23/7/2021</td>
 </tr>
 
 
 
 </table>
-<script type="text/javascript" src="leaderboard.js"></script>
 <script>
-console.log(top10);
-top10.forEach((element,index) => {
+  fetch("leaderboard.json")
+  .then(response => response.json())
+  .then(data => data.forEach((element,index) => {
     document.querySelector(`#pos${index+1} .name`).innerText=element.name;
     document.querySelector(`#pos${index+1} .speed`).innerText=element.speed;
     document.querySelector(`#pos${index+1} .time`).innerText=element.date;
-});
-
+}));
 </script>
 </body>
 </html>

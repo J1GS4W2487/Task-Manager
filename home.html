@@ -17,18 +17,34 @@
             </div>
         </div>
 
+        <div class="frnd-alert">
+            <div class="center-div">
+                <div>
+                    <h1>Ready to Race!</h1>
+                </div>
+               <div>
+                   <input id="roomid" placeholder="Enter Room ID"/>
+               </div>
+               <div>
+                   <div ><button onclick="enter_room()" class="btn2">ENTER ROOM ID</button></div>
+                   <div><button onclick="getroomid()" class="btn3">GET ROOM ID</button></div>
+               </div>
+            </div>
+        </div>
+
         <div class="name-alert">
             <div class="name-box">
-                <div><h1>TYPERACER</h1></div>
+                <div><h1 >TYPERACER</h1></div>
                 <div><label>AT POLE POSITION ?</label></div>
             <div><input type="text" placeholder="your name" id="myname" ></div>
-                <div><button type="submit" onclick="entrace()">Enter the Grand Prix <i class="fas fa-flag-checkered" color="black"></i></button></div>
+                <div><button type="submit" id="autoclick" onclick="entrace()">Enter the Grand Prix <i class="fas fa-flag-checkered" color="black"></i></button></div>
             </div>
         </div>
         
         <header>
-            <h1>typeracer</h1>
-            <div><p> active users   </p><span class="total">0</span></div>
+            <h1 class="typer">typeracer</h1>
+            <div class="active"><p> active users   </p><span class="total">0</span></div>
+            <button type="button" class="leader"  onclick="leaderboard()">HALL OF FAME</button>
         </header>
 
 
@@ -98,19 +114,20 @@
                     </div>
 
                     <div class="bcdiv1">
-                        <button class="btn3">RACE WITH FRIENDS</button>
+                        <button class="btn3" onclick="show_frndrace()">RACE WITH FRIENDS</button>
                     </div>
                 </div>
             </div>
         </main>
 
     </body>
-    <script src ="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src ="https://typeracersp.herokuapp.com/socket.io/socket.io.js"></script>
    
     <script>
 
         var name;
-        const socket = io('http://localhost:3000');
+        var num2;
+        const socket = io('https://typeracersp.herokuapp.com');
 
         // const name = prompt("enter your name to join");
 
@@ -125,6 +142,10 @@
             document.querySelector('.total').innerHTML = data.length;
         });
 
+        show_frndrace=()=>{
+            document.querySelector(".frnd-alert").setAttribute("style","display:flex")
+        }
+
         waiting=()=>{
             socket.emit('waiting',name);
             document.querySelector(".alert").setAttribute("style","display:flex");
@@ -134,21 +155,28 @@
         socket.on('match-found',(data)=>{
             console.log(data);
             for(var h=0;h<data.length;h++){
-            if(data[h].name == name){
-                window.location.replace(`/race?num=${data[h].ranno}&uname=${data[h].name}&room=${data[h].roomno}`);
+                if(data[h].name == name){
+                    window.location.replace(`/race?num=${data[h].ranno}&uname=${data[h].name}&room=${data[h].roomno}`);
+                }
             }
-        }
         });
 
+        if(document.cookie){
+            document.getElementById("myname").value = document.cookie.split(";")[0].split("=")[1];
+            document.getElementById("autoclick").click();
+            console.log(name);
+        }else{
+            console.log("hmm");
+        }
 
         
         function entrace(){
             name = document.getElementById("myname").value;
+            document.cookie = `remembermename=${document.getElementById("myname").value}`;
             if(name==''){
                 alert("All Racers have a Name !");
             }
             else{
-            console.log(name,document.getElementById("myname").value);
             socket.emit('new-user-joined',name);
             document.querySelector(".name-alert").setAttribute("style","display:none");
             document.querySelector("header").setAttribute("style","display:block");
@@ -156,12 +184,34 @@
             }
             
         }
-
         
 
         practice=()=>{
             window.location.replace(`/practice?c=Beginner`);
         }
 
+        leaderboard=()=>{
+            window.location.replace(`/leader`);
+        }
+
+
+        getroomid=()=>{
+            socket.emit("frnd-room",name);
+        }
+
+        enter_room=()=>{
+            socket.emit("enter-race",{name:name,num:document.getElementById("roomid").value});
+            document.querySelector(".frnd-alert").setAttribute("style","display:none");
+            document.querySelector(".alert").setAttribute("style","display:flex");
+        }
+
+        socket.on("frnd-alert",(num)=>{
+            num2 = num;
+            alert(`Your Room Id is ${num2}`);
+        });
+
+        socket.on("enter-race",(data)=>{
+            window.location.replace(`/frnd?num=${data.paranum}&uname=${name}&room=${data.num}`);
+        });
     </script>
 </html>
