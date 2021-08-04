@@ -1,8 +1,8 @@
-import Header from './mycomponents/Header';
-import {Footer} from './mycomponents/Footer';
-import {Todos} from './mycomponents/Todos';
-import {AddTodo} from './mycomponents/AddTodo';
-import {About} from "./mycomponents/About";
+import Header from './Header';
+import {Footer} from './Footer';
+import {Todos} from './Todos';
+import {AddTodo} from './AddTodo';
+import {About} from "./About";
 import React, {useState,useEffect, desc,sno,title} from 'react';
 import {
   BrowserRouter as Router,
